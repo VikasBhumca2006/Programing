@@ -1,6 +1,31 @@
 #include "stdio.h"
 #include "stdlib.h"
-#include "Tree_Utility.h"
+#include "BST_Utility.h"
+
+int getMax ( int x, int y)
+{
+    return ( x > y ? x : y );
+}
+
+int power ( int x, int y )
+{
+    int result = 1, idx ;
+
+    for ( idx = 0; idx < y; idx++ )
+        result = result * x;
+
+    return result;
+}
+
+int Height_Tree ( Tree * root )
+{
+    if ( NULL == root )
+    {
+        return 0;
+    }
+
+    return ( 1 + getMax ( Height_Tree(root->left) , Height_Tree(root->right) ) );
+}
 
 
 Tree * create_Node ( int data )
@@ -64,11 +89,58 @@ void InOrder_Recursive ( Tree * root )
     InOrder_Recursive ( root->right );
 }
 
+void print_Level ( Tree * root, int space, int level, int currLevel )
+{
+    int idx = 0;
+    if ( level == currLevel )
+    {
+        for ( idx = 0; idx < space; idx++ )
+            printf (" ");
+        
+        if ( NULL == root )
+            printf (" ");
+        else
+            printf ("%d",root->data);
+
+        for ( idx = 0; idx < space; idx++ )
+            printf (" ");
+    }
+    else
+    {
+        if ( !root->left )
+            print_Level ( NULL, space, level, currLevel+1 );
+        else
+            print_Level ( root->left, space, level, currLevel+1 );
+
+        if ( !root->right )
+            print_Level ( NULL, space, level, currLevel+1 );
+        else
+            print_Level ( root->right, space, level, currLevel+1 );
+    }
+}
+
 void Print_Tree ( Tree * root )
 {
     printf ("\n In %s\n",__func__);
+    int hight =  Height_Tree ( root );
 
+    int row = 2 * hight + 1;
+    int column = power ( 2, hight + 1 ) - 1;
+
+    printf ("\n ROW = [%d], COLUMN = [%d]\n\n", row, column );
+
+    int space = column / 2 ;
+    int i;
+
+    for ( i = 0; i < hight; i++ )
+    {
+        print_Level ( root, space, i+1, 1 );
+        printf ("\n \n");
+        space = space / 2;
+    }
 }
+
+
 
 Tree * Delete_Node ( Tree *root, int data )
 {
