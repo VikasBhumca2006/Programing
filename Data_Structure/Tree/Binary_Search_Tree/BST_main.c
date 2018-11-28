@@ -8,18 +8,18 @@ int main ()
     
     root = Create_Tree ( arr, 15 );
 
+    printf ("\nHeight_Tree = [%d]\n", Height_Tree (root) );
+
+    printf ("\n");
+    Print_Tree ( root );
+#if 0
     printf ("\n");
     InOrder_Recursive ( root );
     printf ("\n");
+#endif
 
     root = Delete_Node ( root, 12 );
 
-    printf ("\n");
-    InOrder_Recursive ( root );
-    printf ("\n");
-    printf ("\nHeight_Tree = [%d]\n", Height_Tree (root) );
-    printf ("\n");
-    printf ("\n");
     printf ("\n");
     Print_Tree ( root );
 

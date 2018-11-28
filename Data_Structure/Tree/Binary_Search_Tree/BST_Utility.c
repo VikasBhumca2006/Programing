@@ -98,9 +98,12 @@ void print_Level ( Tree * root, int space, int level, int currLevel )
             printf (" ");
         
         if ( NULL == root )
-            printf (" ");
+            printf ("  ");
         else
-            printf ("%d",root->data);
+            if ( root->data > 9 )
+                printf ("%d",root->data);
+            else
+                printf ("%d ",root->data);
 
         for ( idx = 0; idx < space; idx++ )
             printf (" ");
@@ -123,19 +126,23 @@ void Print_Tree ( Tree * root )
 {
     printf ("\n In %s\n",__func__);
     int hight =  Height_Tree ( root );
+    int idx = 0;
 
     int row = 2 * hight + 1;
     int column = power ( 2, hight + 1 ) - 1;
 
     printf ("\n ROW = [%d], COLUMN = [%d]\n\n", row, column );
 
-    int space = column / 2 ;
+    int space = column ;/// 2 ;
     int i;
 
     for ( i = 0; i < hight; i++ )
     {
         print_Level ( root, space, i+1, 1 );
-        printf ("\n \n");
+
+        for ( idx = 0; idx < hight - i; idx++ )
+            printf ("\n");
+
         space = space / 2;
     }
 }
