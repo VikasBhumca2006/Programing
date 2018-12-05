@@ -1,5 +1,6 @@
 CC = gcc # C compiler
-CFLAGS = -fPIC -Wall -Wextra -O2 -g # C flags
+#CFLAGS = -fPIC -Wall -Wextra -O2 -g # C flags
+CFLAGS = -fPIC -Wall -O2 -g # C flags
 LDFLAGS = -shared  # linking flags
 RM = rm -f  # rm command
 TARGET_LIB = libMemoryMgr.so # target lib
