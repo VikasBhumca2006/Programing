@@ -2,6 +2,10 @@
 
 int main ()
 {
+
+    mem_init();
+    logger_init();
+
     Tree * root = NULL;
     int arr[] = {8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15, 17, 0};
 

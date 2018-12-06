@@ -1,6 +1,8 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "BST_Utility.h"
+#include "../../../OS/Memory/Memory_Manager.h"
+#include "../../../Logger/Logger_Utility.h"
 
 int getMax ( int x, int y)
 {
@@ -30,7 +32,8 @@ int Height_Tree ( Tree * root )
 
 Tree * create_Node ( int data )
 {
-    Tree * ptr = ( Tree * ) malloc (sizeof(Tree));
+    //Tree * ptr = ( Tree * ) malloc (sizeof(Tree));
+    Tree * ptr = ( Tree * ) alloc_mem (sizeof(Tree));
     if ( ptr )
     {
         ptr->left = NULL;
@@ -172,7 +175,7 @@ Tree * Delete_Node ( Tree *root, int data )
         if ( NULL == root->left ) 
         {
             tmp = root->right;
-            free (root);
+            free_mem (root);
             return tmp;
 
         }
@@ -180,7 +183,7 @@ Tree * Delete_Node ( Tree *root, int data )
         if ( NULL == root->right ) 
         {
             tmp = root->left;
-            free (root);
+            free_mem (root);
             return tmp;
         }
 

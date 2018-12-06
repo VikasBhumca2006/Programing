@@ -4,7 +4,7 @@ LDFLAGS = -shared  # linking flags
 RM = rm -f  # rm command
 TARGET_LIB = libLinkList.so # target lib
 
-SRCS = LinkList_Utility.c  LinkList_main.c  # source files
+SRCS = LinkList_Utility.c # source files
 OBJS = $(SRCS:.c=.o)
 
 .PHONY: all

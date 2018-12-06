@@ -2,9 +2,9 @@ CC = gcc # C compiler
 CFLAGS = -fPIC -Wall -Wextra -O2 -g # C flags
 LDFLAGS = -shared  # linking flags
 RM = rm -f  # rm command
-TARGET_LIB = libBST.so # target lib
+TARGET_LIB = libLinkList.so # target lib
 
-SRCS = BST_Utility.c  BST_main.c  # source files
+SRCS = LinkList_Utility.c # source files
 OBJS = $(SRCS:.c=.o)
 
 .PHONY: all
