@@ -15,7 +15,7 @@ Queue * Create_Queue ( int *array, int size )
 
 Queue * Create_Node ( int data )
 {
-    Queue * ptr = ( Queue * ) malloc ( sizeof(Queue) );
+    Queue * ptr = ( Queue * ) alloc_mem ( sizeof(Queue) );
     if ( ptr )
     {
         ptr->data = data;
@@ -47,7 +47,7 @@ int dequeue ( Queue **qPtr )
         if ( !tmp->next )
         {
             data = tmp->data;
-            free ( tmp );
+            free_mem ( tmp );
             *qPtr = NULL;
         }
         else
@@ -59,7 +59,7 @@ int dequeue ( Queue **qPtr )
             }
 
             data = tmp->next->data;
-            free ( tmp->next );
+            free_mem ( tmp->next );
             tmp->next = NULL;
         }
     }
@@ -85,3 +85,55 @@ void Print_Queue ( Queue * qPtr )
     Print_Queue ( qPtr->next );
 }
 
+Queue * Create_Node_DataPtr ( int dataPtr )
+{
+    Queue * ptr = ( Queue * ) alloc_mem ( sizeof(Queue) );
+    if ( ptr )
+    {
+        ptr->next = NULL;
+	ptr->dataPtr = NULL;
+        return ptr;
+    }
+    return NULL;
+}
+
+Queue * enqueue_DataPtr ( Queue *qPtr, int dataPtr )
+{
+    Queue * tmp = qPtr;
+    qPtr = Create_Node_DataPtr ( dataPtr );
+    qPtr->next = tmp;
+    return qPtr;
+}
+
+void * dequeue_DataPtr ( Queue **qPtr )
+{
+    void * dataPtr = NULL;
+    Queue * tmp = *qPtr;
+
+    printf ("\n Dequeue ");
+
+    if ( !isEmpty (tmp) )
+    {
+
+        if ( !tmp->next )
+        {
+            dataPtr = tmp->dataPtr;
+            free_mem ( tmp );
+            *qPtr = NULL;
+        }
+        else
+        {
+
+            while ( tmp->next->next )
+            {
+                tmp = tmp->next;
+            }
+
+            dataPtr = tmp->next->dataPtr;
+            free_mem ( tmp->next );
+            tmp->next = NULL;
+        }
+    }
+
+    return dataPtr ;
+}
