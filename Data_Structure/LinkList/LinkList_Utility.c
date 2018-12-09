@@ -20,10 +20,25 @@ LinkList * Create_Node ( int data )
     {
         ptr->data = data;
         ptr->next = NULL;
+        ptr->dataPtr = NULL;
         return ptr;
     }
     return NULL;
 }
+
+LinkList * Create_Node_DataPtr ( int dataPtr )
+{
+    LinkList * ptr = ( LinkList * ) malloc ( sizeof(LinkList) );
+    if ( ptr )
+    {
+        ptr->data = data;
+        ptr->next = NULL;
+        ptr->dataPtr = NULL;
+        return ptr;
+    }
+    return NULL;
+}
+
 
 LinkList * addStart ( LinkList *listPtr, int data )
 {

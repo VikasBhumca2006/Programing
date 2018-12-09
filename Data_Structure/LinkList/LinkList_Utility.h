@@ -6,6 +6,7 @@ struct LinkListNode
 {
     int data;
     struct LinkListNode *next;
+    void *dataPtr;
 };
 
 typedef struct LinkListNode LinkList;
@@ -23,4 +24,6 @@ void Print_LinkList ( LinkList * root );
 LinkList * Create_LinkList ( int *array, int size );
 
 bool isEmpty (LinkList * root );
+
+LinkList * Create_Node_DataPtr ( int dataPtr );
 
