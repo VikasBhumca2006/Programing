@@ -2,9 +2,13 @@
 
 int main ()
 {
+    mem_init();
+    logger_init();
+
     Queue * qPtr = NULL;
     int arr[] = {8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15, 17, 0};
 
+    printf ("\n===============\n");
     qPtr = Create_Queue ( arr, 7 );
 
     printf ("\n===============\n");
