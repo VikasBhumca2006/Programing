@@ -187,13 +187,26 @@ Tree * Delete_Node ( Tree *root, int data )
             return tmp;
         }
 
-        tmp = Min_Value_Node ( root->right );
+	if  ( 0 )
+	{
+        	tmp = Min_Value_Node ( root->right );
+        	printf ("\n Min data = %d", tmp->data );
 
-        printf ("\n Min data = %d", tmp->data );
 
-        root->data = tmp->data;
+        	root->data = tmp->data;
 
-        root->right = Delete_Node ( root->right, tmp->data );
+        	root->right = Delete_Node ( root->right, tmp->data );
+	}
+	else
+	{
+        	tmp = Max_Value_Node ( root->left );
+        	printf ("\n Max data = %d", tmp->data );
+
+		root->data = tmp->data;
+
+		root->left = Delete_Node ( root->left, tmp->data );
+	}
+
     }
 
     return root;
@@ -211,36 +224,14 @@ Tree * Min_Value_Node ( Tree * root )
     return NULL;
 }
 
+Tree * Max_Value_Node ( Tree * root )
+{
+    while ( root )
+    {
+        if ( NULL == root->right )
+            return root;
+        root = root->right;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return NULL;
+}

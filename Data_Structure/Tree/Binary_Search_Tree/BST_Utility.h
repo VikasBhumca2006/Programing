@@ -23,6 +23,8 @@ Tree * Delete_Node ( Tree *root, int data );
 
 Tree * Min_Value_Node (Tree * root );
 
+Tree * Max_Value_Node (Tree * root );
+
 int Height_Tree ( Tree * root );
 
 void Print_Tree ( Tree * root );
