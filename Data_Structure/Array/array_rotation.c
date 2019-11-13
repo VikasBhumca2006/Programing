@@ -29,7 +29,7 @@ void rotate_array ( int *arr, int size, int rotateBy)
 {
     //printf ("\nStart : Rotate Array ");
     int idx , tmp;
-    for ( idx = 0; rotateBy <= size; idx++)// , rotateBy++);
+    for ( idx = 0; rotateBy < size; idx++)// , rotateBy++);
     {
         //print_arr ( arr, 9 );
         tmp = arr [idx];
