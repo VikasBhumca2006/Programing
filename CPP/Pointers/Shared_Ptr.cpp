@@ -16,6 +16,11 @@ class Testshared
         {  cout << "Destroyed" << endl;   }
 };
 
+void Deleteor(Testshared *ptr)
+{
+    cout << "Deleteor" << endl;   
+}
+
 int main()
 {
     shared_ptr <Testshared> ptr = make_shared<Testshared> ();
@@ -28,5 +33,11 @@ int main()
     cout << "Pointer qtr = " << qtr.get()<< endl;
     cout << "Pointer obj = " << obj.get()<< endl;
     
+    cout << "Created with deleteor" << endl;
+    shared_ptr<Testshared> delPtr (new Testshared(), &Deleteor);
+    
     return 0;
 }
+
+
+
